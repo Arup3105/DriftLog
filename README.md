@@ -25,26 +25,26 @@ Driftlog monitors your repos and alerts you the moment drift is detected.
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────┐
 │                   Next.js App (App Router)           │
 │                                                      │
-│  ┌──────────────┐        ┌──────────────────────┐   │
+│  ┌──────────────┐        ┌───────────────────────┐   │
 │  │  Dashboard   │        │     API Routes        │   │
 │  │  (React UI)  │◄──────►│  /api/repos           │   │
 │  └──────────────┘        │  /api/drift/check     │   │
-│                           │  /api/drift/logs      │   │
-│                           │  /api/drift/snapshot  │   │
-│                           │  /api/settings/  │   │
-│                           └──────────┬───────────┘   │
+│                          │  /api/drift/logs      │   │
+│                          │   /api/drift/snapshot │   │
+│                          │  /api/settings/       │   │
+│                          └──────────┬────────────┘   │
 └──────────────────────────────────────┼───────────────┘
                                        │
               ┌────────────────────────┼────────────────┐
               │                        │                │
-     ┌────────▼───────┐    ┌───────────▼──────┐        │
-     │   MongoDB       │    │   GitHub API      │        │
-     │   (Repos +      │    │   (Octokit)       │        │
-     │   DriftLogs)    │    │   Fetch tree/SHAs │        │
-     └────────────────┘    └──────────────────┘        │
+     ┌────────▼───────┐    ┌───────────▼──────┐         │
+     │   MongoDB      │    │   GitHub API     │         │
+     │   (Repos +     │    │   (Octokit)      │         │
+     │   DriftLogs)   │    │   Fetch tree/SHAs│         │
+     └────────────────┘    └──────────────────┘         │
                                                         │
 ┌───────────────────────────────────────────────────────┘
 │  DevOps Layer
